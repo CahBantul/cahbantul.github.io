@@ -1,14 +1,14 @@
-const inputCari = document.querySelector(".input-cari");
-const tombolCari = document.querySelector(".tombol-cari");
-tombolCari.addEventListener("click", function () {
+const inputCari = document.querySelector('.input-cari');
+const tombolCari = document.querySelector('.tombol-cari');
+tombolCari.addEventListener('click', function () {
   fetch(`http://www.omdbapi.com/?apikey=fc76c0a9&s=${inputCari.value}`)
     .then((res) => res.json())
     .then((res) => {
       const movies = res.Search;
 
-      const movieContainer = document.querySelector(".movie-container");
+      const movieContainer = document.querySelector('.movie-container');
 
-      let data = "";
+      let data = '';
       movies.forEach((movie) => {
         data += `
           <div class="col-md-4 mt-3">
@@ -26,16 +26,16 @@ tombolCari.addEventListener("click", function () {
 
       movieContainer.innerHTML = data;
 
-      const idTombol = document.querySelectorAll(".tombol-detail");
+      const idTombol = document.querySelectorAll('.tombol-detail');
       idTombol.forEach((tombol) => {
-        tombol.addEventListener("click", function () {
+        tombol.addEventListener('click', function () {
           fetch(
             `http://www.omdbapi.com/?apikey=fc76c0a9&i=${tombol.dataset.imdbid}`
           )
             .then((res) => res.json())
             .then((movieDetail) => {
               const movieDetailContent =
-                document.querySelector(".movie-detail");
+                document.querySelector('.movie-detail');
               movieDetailContent.innerHTML = `
           <div class="container-fluid">
             <div class="row">
